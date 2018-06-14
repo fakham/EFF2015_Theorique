@@ -1,0 +1,11 @@
+a)
+
+/seances/seance[formateur/text() = "CHAKIR Said"]
+
+b)
+
+/seances/seance[groupe/text() = "TDI201]/salle
+
+c)
+
+count(/seances/seance[@debut = "08:00"])

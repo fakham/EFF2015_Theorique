@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+    <body>
+        <h1>Calcul valeur énergétique d'un repas</h1>
+        <h3>Choisir les aliments qui composent votre repas : </h3>
+        <br>
+        <br>
+        <table>
+            <tr>
+                <td>
+                    <input type="checkbox" name="Pain" id="Pain"/>
+                    <label>Pain : </label>
+                </td>
+                <td>
+                    <input type="number" name="nbr_pain" id="nbr_pain"/>
+                    <label>grammes</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" name="Viande" id="Viande"/>
+                    <label>Viande : </label>
+                </td>
+                <td>
+                    <input type="number" name="nbr_viande" id="nbr_viande"/>
+                    <label>grammes</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" name="Legumes" id="Legumes"/>
+                    <label>Légumes : </label>
+                </td>
+                <td>
+                    <input type="number" name="nbr_legumes" id="nbr_legumes"/>
+                    <label>grammes</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" name="Banane" id="Banane"/>
+                    <label>Banane : </label>
+                </td>
+                <td>
+                    <input type="number" name="nbr_banane" id="nbr_banane"/>
+                    <label>unités</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" name="Pomme" id="Pomme"/>
+                    <label>Pomme : </label>
+                </td>
+                <td>
+                    <input type="number" name="nbr_pomme" id="nbr_pomme"/>
+                    <label>unités</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" name="Yaourt" id="Yaourt"/>
+                    <label>Yaourt : </label>
+                </td>
+                <td>
+                    <input type="number" name="nbr_yaourt" id="nbr_yaourt"/>
+                    <label>unités</label>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <button onclick="calculer_jquery()">Calculer</button>
+                </td>
+            </tr>
+        </table>
+        <br>
+        <div>
+            <b>
+                La valeur énergétique de votre repas est : 
+                <input type="number" name="results" id="results"/>
+                Kilo calories
+            </b>
+        </div>
+        <script type="text/javascript" src="jquery.min.js" ></script>
+        <script type="text/javascript">
+            // javascript : 
+            function calculer() {
+                var isChecked = false;
+                var total = 0;
+
+                var check_pain = document.getElementById("Pain");
+                var check_viande = document.getElementById("Viande");
+                var check_legumes = document.getElementById("Legumes");
+                var check_banane = document.getElementById("Banane");
+                var check_pomme = document.getElementById("Pomme");
+                var check_yaourt = document.getElementById("Yaourt");
+
+                var valeur_pain = document.getElementById("nbr_pain");
+                var valeur_viande = document.getElementById("nbr_viande");
+                var valeur_legumes = document.getElementById("nbr_legumes");
+                var valeur_banane = document.getElementById("nbr_banane");
+                var valeur_pomme = document.getElementById("nbr_pomme");
+                var valeur_yaourt = document.getElementById("nbr_yaourt");
+
+                if (check_pain.checked) {
+                    isChecked = true;
+                    total += (valeur_pain.value * 275) / 100;
+                }
+
+                if (check_viande.checked) {
+                    isChecked = true;
+                    total += (valeur_viande.value * 180) / 100;
+                }
+
+                if (check_legumes.checked) {
+                    isChecked = true;
+                    total += (valeur_legumes.value * 40) / 100;
+                }
+
+                if (check_banane.checked) {
+                    isChecked = true;
+                    total += valeur_banane.value * 116;
+                }
+
+                if (check_pomme.checked) {
+                    isChecked = true;
+                    total += valeur_pomme.value * 80;
+                }
+
+                if (check_yaourt.checked) {
+                    isChecked = true;
+                    total += valeur_yaourt.value * 140;
+                }
+                
+                document.getElementById("results").value = total;
+
+                if (!isChecked)
+                    alert("Au moins une case à cocher doit être sélectionnée!");
+            }
+            // jQuery : 
+            function calculer_jquery() {
+
+                var total = 0;
+                var isChecked = false;
+
+                var check_pain = $("#Pain").prop("checked");
+                var check_viande = $("#Viande").prop("checked");
+                var check_legumes = $("#Legumes").prop("checked");
+                var check_banane = $("#Banane").prop("checked");
+                var check_pomme = $("#Pomme").prop("checked");
+                var check_yaourt = $("#Yaourt").prop("checked");
+
+                var valeur_pain = $("#nbr_pain").val();
+                var valeur_viande = $("#nbr_viande").val();
+                var valeur_legumes = $("#nbr_legumes").val();
+                var valeur_banane = $("#nbr_banane").val();
+                var valeur_pomme = $("#nbr_pomme").val();
+                var valeur_yaourt = $("#nbr_yaourt").val();
+
+                if (check_pain) {
+                    isChecked = true;
+                    total += (valeur_pain * 275) / 100;
+                }
+
+                if (check_viande) {
+                    isChecked = true;
+                    total += (valeur_viande * 180) / 100;
+                }
+
+                if (check_legumes) {
+                    isChecked = true;
+                    total += (valeur_legumes * 40) / 100;
+                }
+
+                if (check_banane) {
+                    isChecked = true;
+                    total += valeur_banane * 116;
+                }
+
+                if (check_pomme) {
+                    isChecked = true;
+                    total += valeur_pomme * 80;
+                }
+
+                if (check_yaourt) {
+                    isChecked = true;
+                    total += valeur_yaourt * 140;
+                }
+
+                $("#results").val(total);
+
+                if (!isChecked)
+                    alert("Au moins une case à cocher doit être sélectionnée!");
+                    
+            }
+        </script>
+    </body>
+</html>
